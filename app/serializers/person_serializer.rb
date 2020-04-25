@@ -2,7 +2,7 @@
 
 # UserSerializer class
 class PersonSerializer < ActiveModel::Serializer
-  attributes :id, :first_name, :last_name, :aliases, :as_actor, :as_director,
+  attributes :id, :first_name, :last_name, :aliases, :genre, :as_actor, :as_director,
              :as_producer
 
   def as_actor

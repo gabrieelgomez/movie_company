@@ -20,9 +20,10 @@ end
   person = Person.new(
     first_name: Faker::DcComics.name,
     last_name: Faker::Name.last_name,
-    aliases: Faker::Internet.username
+    aliases: Faker::Internet.username,
+    genre: %w[male female].sample
   )
-  person.role_ids = Role.all.take(2).map(&:id)
+  person.role_ids = Role.all.shuffle[1..2].map(&:id)
   person.save
 end
 
@@ -31,6 +32,6 @@ end
     title: Faker::DcComics.title,
     release_year: Faker::Date.in_date_period
   )
-  movie.person_ids = Person.take(5).map(&:id)
+  movie.person_ids = Person.all.shuffle[1..5].map(&:id)
   movie.save
 end

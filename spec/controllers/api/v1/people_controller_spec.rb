@@ -14,7 +14,7 @@ module Api::V1
               'first_name': Faker::DcComics.name,
               'last_name': Faker::Name.last_name,
               'aliases': Faker::Internet.username,
-              'role_ids': Role.take(2).map(&:id)
+              'role_ids': Role.shuffle[1..5].map(&:id)
             }
           }
         end
@@ -80,7 +80,7 @@ module Api::V1
               'first_name': Faker::DcComics.name,
               'last_name': Faker::Name.last_name,
               'aliases': Faker::Internet.username,
-              'role_ids': Role.take(2).map(&:id)
+              'role_ids': Role.shuffle[1..5].map(&:id)
             }
           }
         end

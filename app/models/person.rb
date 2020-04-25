@@ -10,6 +10,9 @@ class Person < ApplicationRecord
   accepts_nested_attributes_for :people_roles
 
   validates :first_name, :last_name, :aliases, presence: true
+  validates :genre,
+            inclusion: %w[male female],
+            allow_nil: false
 
   def movies_as(role_name)
     movies.includes(people: [:roles])

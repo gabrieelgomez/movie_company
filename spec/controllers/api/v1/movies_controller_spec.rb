@@ -15,7 +15,7 @@ module Api::V1
             'movie': {
               'title': Faker::DcComics.title,
               'release': Faker::Date.in_date_period,
-              'person_ids': Person.take(5).map(&:id)
+              'person_ids': Person.all.shuffle[1..5].map(&:id)
             }
           }
         end

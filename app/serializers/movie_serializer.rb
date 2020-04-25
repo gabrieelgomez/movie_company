@@ -2,10 +2,10 @@
 
 # UserSerializer class
 class MovieSerializer < ActiveModel::Serializer
-  attributes :id, :title, :release_year, :actors, :directors, :producers
+  attributes :id, :title, :release_year, :casting, :directors, :producers
 
-  def actors
-    object.people_as('actor')
+  def casting
+    object.casting
   end
 
   def directors
