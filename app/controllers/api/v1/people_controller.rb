@@ -3,7 +3,7 @@
 # Api::V1 module
 module Api::V1
   # People::PeopleController controller
-  class People::PeopleController < ApiController
+  class PeopleController < ApiController
     before_action :authenticate_v1_user!, except: %i[index show]
     before_action :set_person, only: %i[show update destroy]
 

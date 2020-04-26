@@ -3,9 +3,9 @@
 # Api::V1 module
 module Api::V1
   # Movies::MoviesController controller
-  class Movies::MoviesController < ApiController
+  class MoviesController < ApiController
     before_action :authenticate_v1_user!, except: %i[index show]
-    before_action :set_movie, only: %i[show updatedestroy]
+    before_action :set_movie, only: %i[show update destroy]
 
     def create
       @movie = Movie.new(movie_params)

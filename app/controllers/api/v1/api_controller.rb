@@ -7,7 +7,6 @@ module Api
     # ApiController controller
     class ApiController < ApplicationController
       respond_to :json
-
     end
   end
 end

@@ -1,4 +1,4 @@
-namespace :movies do
+scope :movies do
   get '/', to: 'movies#index'
   get '/:movie_id', to: 'movies#show'
   post '/create', to: 'movies#create'

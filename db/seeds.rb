@@ -11,21 +11,24 @@ User.create(
   password: '12345678',
   password_confirmation: '12345678'
 )
+p 'User admin created'
 
-%w[actor director producer].each do |role|
+Role::TYPES.each do |role|
   Role.create(name: role)
 end
+p 'Roles created'
 
 30.times do
   person = Person.new(
     first_name: Faker::DcComics.name,
     last_name: Faker::Name.last_name,
     aliases: Faker::Internet.username,
-    genre: %w[male female].sample
+    genre: Person::GENRES.sample
   )
   person.role_ids = Role.all.shuffle[1..2].map(&:id)
   person.save
 end
+p 'Actors, Directors and Producers created'
 
 10.times do
   movie = Movie.new(
@@ -35,3 +38,4 @@ end
   movie.person_ids = Person.all.shuffle[1..5].map(&:id)
   movie.save
 end
+p 'Movies created'

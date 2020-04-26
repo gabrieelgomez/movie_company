@@ -7,10 +7,7 @@ module Roleable
   included do
     def has_role?(role_name)
       role_array = roles.where(name: role_name)
-
-      return false if role_array.empty?
-
-      role_array != []
+      role_array.any?
     end
   end
 end

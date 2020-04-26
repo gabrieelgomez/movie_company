@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2020_04_25_164418) do
   enable_extension "plpgsql"
 
   create_table "movies", force: :cascade do |t|
-    t.string "title"
-    t.date "release_year"
+    t.string "title", null: false
+    t.date "release_year", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -32,10 +32,10 @@ ActiveRecord::Schema.define(version: 2020_04_25_164418) do
   end
 
   create_table "people", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "aliases"
-    t.string "genre"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "aliases", null: false
+    t.string "genre", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_04_25_164418) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
