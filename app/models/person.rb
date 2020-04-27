@@ -17,9 +17,6 @@ class Person < ApplicationRecord
 
   # Get movies by person's role
   def movies_as(role_name)
-    # doesn't work movies.includes(casts: [:role])
-    #                    .where(casts: { role: { name: role_name } } )
-    role = Role.find_by(name: role_name)
-    movies.includes({ casts: [:role] }).where(casts: { role: role })
+    movies.includes(casts: :role).where({ roles: { name: role_name } })
   end
 end

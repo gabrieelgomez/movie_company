@@ -12,6 +12,12 @@ Rails.application.routes.draw do
 
       # --- Movies routes
       draw :movies
+
+      # --- Roles routes
+      draw :roles
+
+      # --- Casts routes
+      draw :casts
     end
   end
 end

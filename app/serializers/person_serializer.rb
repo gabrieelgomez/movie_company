@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# UserSerializer class
+# PersonSerializer class
 class PersonSerializer < ActiveModel::Serializer
   attributes :id, :first_name, :last_name, :aliases, :genre, :movies_as_actor,
              :movies_as_director, :movies_as_producer
