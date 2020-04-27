@@ -6,10 +6,9 @@ class Person < ApplicationRecord
 
   GENRES = %w[male female].freeze
 
-  has_and_belongs_to_many :roles
-  has_and_belongs_to_many :movies
-
-  accepts_nested_attributes_for :people_roles
+  has_many :casts
+  has_many :movies, through: :casts
+  has_many :roles, through: :casts
 
   validates :first_name, :last_name, :aliases, presence: true
   validates :genre,
@@ -18,7 +17,9 @@ class Person < ApplicationRecord
 
   # Get movies by person's role
   def movies_as(role_name)
-    movies.includes(people: [:roles])
-          .where(roles: { name: role_name&.singularize })
+    # doesn't work movies.includes(casts: [:role])
+    #                    .where(casts: { role: { name: role_name } } )
+    role = Role.find_by(name: role_name)
+    movies.includes({ casts: [:role] }).where(casts: { role: role })
   end
 end

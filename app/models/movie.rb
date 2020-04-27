@@ -2,13 +2,18 @@
 
 # Movie class
 class Movie < ApplicationRecord
-  has_and_belongs_to_many :people
+  has_many :casts
+  has_many :people, through: :casts
+  has_many :roles, through: :casts
 
   validates :title, :release_year, presence: true
 
   # Get all records by roles, actors, directors, producers
   def people_as(role_name)
-    people.includes(:roles).where(roles: { name: role_name&.singularize })
+    # doesn't work people.includes(casts: [:role])
+    #                    .where(casts: { role: { name: role_name } } )
+    role = Role.find_by(name: role_name)
+    people.includes({ casts: [:role] }).where(casts: { role: role })
   end
 
   # Get people records with male genre

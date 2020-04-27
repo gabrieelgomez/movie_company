@@ -10,25 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_25_164418) do
+ActiveRecord::Schema.define(version: 2020_04_26_215607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "casts", force: :cascade do |t|
+    t.bigint "movie_id", null: false
+    t.bigint "person_id", null: false
+    t.bigint "role_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["movie_id"], name: "index_casts_on_movie_id"
+    t.index ["person_id"], name: "index_casts_on_person_id"
+    t.index ["role_id"], name: "index_casts_on_role_id"
+  end
 
   create_table "movies", force: :cascade do |t|
     t.string "title", null: false
     t.date "release_year", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "movies_people", force: :cascade do |t|
-    t.bigint "movie_id"
-    t.bigint "person_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["movie_id"], name: "index_movies_people_on_movie_id"
-    t.index ["person_id"], name: "index_movies_people_on_person_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -38,13 +40,6 @@ ActiveRecord::Schema.define(version: 2020_04_25_164418) do
     t.string "genre", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "people_roles", id: false, force: :cascade do |t|
-    t.bigint "person_id"
-    t.bigint "role_id"
-    t.index ["person_id"], name: "index_people_roles_on_person_id"
-    t.index ["role_id"], name: "index_people_roles_on_role_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -83,4 +78,7 @@ ActiveRecord::Schema.define(version: 2020_04_25_164418) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "casts", "movies"
+  add_foreign_key "casts", "people"
+  add_foreign_key "casts", "roles"
 end

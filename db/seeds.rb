@@ -25,17 +25,21 @@ p 'Roles created'
     aliases: Faker::Internet.username,
     genre: Person::GENRES.sample
   )
-  person.role_ids = Role.all.shuffle[1..2].map(&:id)
   person.save
 end
 p 'Actors, Directors and Producers created'
 
 10.times do
-  movie = Movie.new(
+  movie = Movie.create(
     title: Faker::DcComics.title,
     release_year: Faker::Date.in_date_period
   )
-  movie.person_ids = Person.all.shuffle[1..5].map(&:id)
+  movie.casts.new([50.times.map{
+    {
+      person: Person.all.shuffle.sample,
+      role: Role.all.shuffle.sample
+    }
+  }])
   movie.save
 end
 p 'Movies created'

@@ -2,18 +2,18 @@
 
 # UserSerializer class
 class PersonSerializer < ActiveModel::Serializer
-  attributes :id, :first_name, :last_name, :aliases, :genre, :as_actor, :as_director,
-             :as_producer
+  attributes :id, :first_name, :last_name, :aliases, :genre, :movies_as_actor,
+             :movies_as_director, :movies_as_producer
 
-  def as_actor
+  def movies_as_actor
     object.movies_as('actor')
   end
 
-  def as_director
+  def movies_as_director
     object.movies_as('director')
   end
 
-  def as_producer
+  def movies_as_producer
     object.movies_as('producer')
   end
 end
