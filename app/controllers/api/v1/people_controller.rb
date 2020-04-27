@@ -11,7 +11,7 @@ module Api::V1
     def create
       @person = Person.new(person_params)
       if @person.save
-        render json: @person, status: :created
+        render json: @person, status: :ok
       else
         render json: @person.errors, status: 422
       end
@@ -24,7 +24,7 @@ module Api::V1
 
     # GET v1/persons
     def index
-      @persons = Person.all.includes(:roles, :movies)
+      @persons = Person.all.includes(:roles, :movies).order(id: :asc)
       render json: @persons, status: :ok
     end
 

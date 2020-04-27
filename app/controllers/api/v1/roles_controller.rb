@@ -13,7 +13,7 @@ module Api::V1
 
     # GET v1/roles
     def index
-      @roles = Role.all.includes(:people, :movies)
+      @roles = Role.all_types
       render json: @roles, status: :ok
     end
 

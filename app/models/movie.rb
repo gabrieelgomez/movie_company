@@ -12,7 +12,10 @@ class Movie < ApplicationRecord
 
   # Get all records by roles, actors, directors, producers
   def people_as(role_name)
-    people.includes(casts: :role).where({ roles: { name: role_name } })
+    # doesn't work people.includes(casts: [:role])
+    #                    .where(casts: { role: { name: role_name } } )
+    role = Role.find_by(name: role_name)
+    people.includes({ casts: [:role] }).where(casts: { role: role })
   end
 
   # Get people records with male genre

@@ -11,7 +11,7 @@ module Api::V1
     def create
       @movie = Movie.new(movie_params)
       if @movie.save
-        render json: @movie, status: :created
+        render json: @movie, status: :ok
       else
         render json: @movie.errors, status: 422
       end
@@ -24,7 +24,7 @@ module Api::V1
 
     # GET v1/movies
     def index
-      @movies = Movie.all.includes(:people)
+      @movies = Movie.all.includes(:people).order(id: :asc)
       render json: @movies, status: :ok
     end
 

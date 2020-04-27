@@ -2,5 +2,5 @@
 
 # RoleSerializer class
 class RoleSerializer < ActiveModel::Serializer
-  attributes :id, :name, :created_at, :updated_at, :people, :movies
+  attributes :id, :name, :created_at, :updated_at
 end

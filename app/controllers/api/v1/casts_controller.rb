@@ -11,7 +11,7 @@ module Api::V1
     def create
       @cast = Cast.new(cast_params)
       if @cast.save
-        render json: @cast, status: :created
+        render json: @cast, include: [:movie], status: :ok
       else
         render json: @cast.errors, status: 422
       end
@@ -19,19 +19,19 @@ module Api::V1
 
     # GET v1/casts/:cast_id
     def show
-      render json: @cast, status: :ok
+      render json: @cast, include: [:movie], status: :ok
     end
 
     # GET v1/casts
     def index
-      @casts = Cast.all.includes(:person, :role, :movie)
+      @casts = Cast.all.includes(:person, :role, :movie).order(id: :asc)
       render json: @casts, status: :ok
     end
 
     # POST v1/casts/destroy
     def destroy
       if @cast.destroy
-        render json: @cast, status: :ok
+        render json: @cast, include: [:movie], status: :ok
       else
         render json: @cast.errors, status: 422
       end

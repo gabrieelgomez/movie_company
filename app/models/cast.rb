@@ -11,11 +11,4 @@ class Cast < ApplicationRecord
               message: "Can't be in a movie with the same role more than once",
               scope: %i[movie_id role_id]
             }.freeze
-
-  # before_save :validates_roles
-
-  # # validates roles types in create
-  # def validates_roles
-    
-  # end
 end

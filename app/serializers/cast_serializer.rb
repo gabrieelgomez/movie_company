@@ -2,5 +2,7 @@
 
 # CastSerializer class
 class CastSerializer < ActiveModel::Serializer
-  attributes :id, :person, :movie, :role
+  attributes :id, :person, :role
+
+  belongs_to :movie
 end

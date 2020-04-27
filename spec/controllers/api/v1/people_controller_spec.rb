@@ -24,7 +24,7 @@ module Api::V1
         end
 
         it 'responds with status created' do
-          expect(response).to have_http_status(:created)
+          expect(response).to have_http_status(:ok)
         end
 
         it 'responds with the object created' do
