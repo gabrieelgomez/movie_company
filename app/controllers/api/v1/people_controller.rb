@@ -51,7 +51,7 @@ module Api::V1
     # Person params
     def person_params
       params.require(:person).permit(
-        :first_name, :last_name, :aliases,
+        :first_name, :last_name, :aliases, :genre,
         people_roles_attributes: %i[id role_id]
       )
     end
