@@ -34,7 +34,7 @@ p 'Actors, Directors and Producers created'
     title: Faker::DcComics.title,
     release_year: Faker::Date.in_date_period
   )
-  movie.casts.new([50.times.map{
+  movie.casts.create([50.times.map{
     {
       person: Person.all.shuffle.sample,
       role: Role.all.shuffle.sample
