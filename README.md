@@ -13,8 +13,6 @@ Movie Company - IT Crowd Challenge
 #### API Docs
 ----------------------------------------------
 - Documentation Endpoints [here](docs/api_doc.md)
-- https://api-movie-company.herokuapp.com/apipie
-- http://localhost:3000/apipie
 
 #### Configuration
 ----------------------------------------------
