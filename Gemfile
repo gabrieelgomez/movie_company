@@ -28,6 +28,9 @@ gem 'devise_token_auth'
 # Api Serializer
 gem 'active_model_serializers', '~> 0.10.0'
 
+# Api documentation
+gem 'apipie-rails'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 

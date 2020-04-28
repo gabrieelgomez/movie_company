@@ -4,6 +4,7 @@
 module Api::V1
   # Movies::MoviesController controller
   class MoviesController < ApiController
+    include MoviesDoc
     before_action :authenticate_v1_user!, except: %i[index show]
     before_action :set_movie, only: %i[show update destroy]
 
